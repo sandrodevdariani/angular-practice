@@ -1,0 +1,15 @@
+ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li{
+    text-align: center;
+}
+
+.books {
+
+    list-style: none;
+    text-overflow: ellipsis;
+    width: 25%;
+}

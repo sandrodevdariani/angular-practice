@@ -1,27 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { book } from 'src/types/Book';
+import { BooksService } from './books.service';
+
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent {
-    name: string = 'Clean Code';
-    author: string = 'Robet C Martin';
-    src: string = 'https://books.google.ge/books/publisher/content?id=hjEFCAAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE71OIJ9ugc8XDAzAXfGQYegLccsyn4NliMVk4iPAYPHMB5O_wHPL8YxLvIL64YrVkNHxFBGPwp9O44Yi0zGozHoInTSBxdI7XGzGgkUDlTG8imQC7zHiJHQQAzpKtPEorxZRoKRJ'
+export class BooksComponent implements OnInit {
 
 
-    name2: string = "Book2";
-    author2: string = "author2";
-    src2: string = 'https://books.google.ge/books/publisher/content?id=hjEFCAAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE71OIJ9ugc8XDAzAXfGQYegLccsyn4NliMVk4iPAYPHMB5O_wHPL8YxLvIL64YrVkNHxFBGPwp9O44Yi0zGozHoInTSBxdI7XGzGgkUDlTG8imQC7zHiJHQQAzpKtPEorxZRoKRJ'
-    
+  constructor(private booksService: BooksService ) {}; 
+
+  books: book[] = [];
 
 
-    isDisabled: boolean = false
+  ngOnInit(): void{
+    this.books = this.booksService.getBooks();
+  }
+  
 
-    handleClick() {
 
-      this.isDisabled = true;
+   isShowing: boolean = true
 
+    addToCart(book: book){
+      console.log(book)
     }
   }
